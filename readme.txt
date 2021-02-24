@@ -35,9 +35,8 @@ Compilation:
 2. Run "make".
 
 Running:
-1. Obtain tsp instance and tour files. You can use download_tsp_data.py.
-2. Modify config.txt to point to your tsp instance and (optional) tour file.
-3. Run "./k-opt.out" for usage details.
+1. Modify config.txt to point to your tsp instance and (optional) tour file.
+2. Run "./k-opt.out" for usage details.
 
 Style notes:
 1. Namespaces follow directory structure. If an entire namespace is in a single header file, the header file name will be the namespace name.
