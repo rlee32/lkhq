@@ -19,4 +19,4 @@ tsp_file_path   ../data/xrb14233.tsp
 tour_file_path  /tmp/perturbed.tour
 
 # if not specified, better tours are not saved.
-save_dir        ./saves/
+output_path /tmp/local-optimum.tour

@@ -53,30 +53,6 @@ int main(int argc, const char** argv)
         << std::endl;
     std::cout << "Finished quadtree in " << timer.stop() / 1e9 << " seconds.\n\n";
 
-    auto best_length = initial_tour_length;
-
-    const auto &save_prefix = tsp_file_path->stem().string();
-    const auto &save_dir_string = config.get("save_dir");
-    std::optional<std::filesystem::path> save_dir;
-    if (save_dir_string) {
-        save_dir = std::filesystem::path(*save_dir_string);
-        if (not std::filesystem::exists(*save_dir)) {
-            std::filesystem::create_directory(*save_dir);
-        }
-    }
-    auto write_if_better = [&](primitives::length_t new_length)
-    {
-        if (new_length < best_length)
-        {
-            if (save_dir) {
-                const auto &save_path = *save_dir / (save_prefix + '_' + std::to_string(new_length) + ".tour");
-                fileio::write_ordered_points(tour.order(), save_path);
-                std::cout << "saved tour to " << save_path << std::endl;
-            }
-            best_length = new_length;
-        }
-    };
-
     PointSet point_set(root, x, y);
 
     // hill climb from initial tour.
@@ -84,11 +60,19 @@ int main(int argc, const char** argv)
     const auto &kmax = config.get<size_t>("kmax", 3);
     std::cout << "kmax: " << kmax << std::endl;
     auto new_length = hill_climb::hill_climb(hill_climber, tour, kmax);
-    if (new_length < best_length) {
-        best_length = new_length;
-        std::cout << "new improved length: " << new_length << std::endl;
+
+    std::cout << std::endl;
+    std::cout << "starting tour length: " << initial_tour_length << std::endl;
+    std::cout << "finished tour length: " << new_length << std::endl;
+
+    // Write new tour if better.
+    if (new_length < initial_tour_length) {
+        const auto &output_path = config.get("output_path");
+        if (output_path) {
+            fileio::write_ordered_points(tour.order(), *output_path);
+            std::cout << "saved new tour to " << *output_path << std::endl;
+        }
     }
-    write_if_better(new_length);
 
     return EXIT_SUCCESS;
 }
