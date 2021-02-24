@@ -1,17 +1,9 @@
 #include "NanoTimer.h"
-#include "check.hh"
 #include "config.hh"
 #include "fileio.hh"
 #include "hill_climb.hh"
-#include "hill_climber.hh"
-#include "merge/merge.hh"
-#include "perturb.hh"
-#include "point_quadtree/Domain.h"
 #include "point_quadtree/point_quadtree.h"
-#include "randomize/double_bridge.h"
 #include "tour.hh"
-#include "multicycle_tour.hh"
-#include "two_short.hh"
 
 #include <filesystem>
 #include <iostream>
