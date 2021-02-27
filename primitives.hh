@@ -18,5 +18,10 @@ using quadrant_t = int; // as in quadtree quadrant index.
 using morton_key_t = uint64_t;
 using grid_t = int; // for indexing a grid produced by a quadtree at a certain depth.
 
+enum class Direction {
+    Forward,
+    Backward
+};
+
 } // namespace primitives
 
