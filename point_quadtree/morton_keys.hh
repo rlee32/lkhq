@@ -3,8 +3,8 @@
 // Morton keys are interleaved coordinates, which are integer representations
 // of x, y coordinates normalized to [0, 1].
 
-#include "Domain.h"
-#include <constants.h>
+#include "domain.hh"
+#include <constants.hh>
 #include <primitives.hh>
 
 #include <algorithm>

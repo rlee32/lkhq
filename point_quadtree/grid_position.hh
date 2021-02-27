@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Domain.h"
+#include "domain.hh"
 #include "primitives.hh"
 #include <box.hh>
 

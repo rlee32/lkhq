@@ -1,8 +1,8 @@
-#include "NanoTimer.h"
+#include "nano_timer.hh"
 #include "config.hh"
 #include "fileio.hh"
 #include "hill_climb.hh"
-#include "point_quadtree/point_quadtree.h"
+#include "point_quadtree/point_quadtree.hh"
 #include "tour.hh"
 
 #include <filesystem>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <constants.h>
+#include <constants.hh>
 #include <primitives.hh>
 #include <iostream>
 

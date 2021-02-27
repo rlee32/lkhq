@@ -1,7 +1,7 @@
 #pragma once
 
 #include <primitives.hh>
-#include <constants.h>
+#include <constants.hh>
 
 #include <array>
 #include <algorithm> // min_element, max_element

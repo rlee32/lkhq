@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Domain.h"
-#include "GridPosition.h"
+#include "domain.hh"
+#include "grid_position.hh"
 #include "node.hh"
-#include "morton_keys.h"
-#include <constants.h>
+#include "morton_keys.hh"
+#include <constants.hh>
 #include <primitives.hh>
 
 #include <stdexcept>

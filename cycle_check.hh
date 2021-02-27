@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BrokenEdge.h"
+#include "broken_edge.hh"
 #include "kmove.hh"
 #include "tour.hh"
 #include "primitives.hh"

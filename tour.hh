@@ -4,8 +4,8 @@
 #include "box_maker.hh"
 #include "kmove.hh"
 #include "length_calculator.hh"
-#include "constants.h"
-#include "point_quadtree/Domain.h"
+#include "constants.hh"
+#include "point_quadtree/domain.hh"
 #include "point_quadtree/node.hh"
 #include "primitives.hh"
 

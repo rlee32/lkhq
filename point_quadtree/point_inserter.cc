@@ -1,4 +1,4 @@
-#include "PointInserter.h"
+#include "point_inserter.hh"
 
 namespace point_quadtree {
 
