@@ -20,7 +20,8 @@ Novel features of this TSP solver:
 
 2. Preserve sequential-move k-optimality. LK / LKH gives up sequential-move k-optimality.
     Note that sequential-move k-optimality is equivalent to full k-optimality for k in [2, 3].
-    Finding higher-opt moves with this implementation is probably slower than in LKH (disregarding LKH's initial O(n^2) MST creation),
+    For k > 3, non-sequential moves are possible, but are not checked in this solver.
+    Finding higher-opt moves with this implementation is probably 'slower' than in LKH (disregarding LKH's initial O(n^2) MST creation),
     but there might be moves that are found by this implementation that would be undetected in LKH. Proof:
         Using 3-opt hill-climber on first world record (by LKH) of lrb744710 quickly returns improvements.
         Although it is an old world record, it proves that LKH (and LK) gives up k-optimality by arbitrarily fixing search neighborhoods.
@@ -29,6 +30,8 @@ Novel features of this TSP solver:
 3. Increase inter-iteration efficiency by skipping searches that cannot result in any changes.
     Associate every point with a box that covers the entire domain that was explored in its k-opt search.
     Then redo the search for said point only if changed points fall within said box.
+
+4. Only take steps that have the possibility of becoming feasible moves. This avoids the potentially numerous and costly feasibility checks (especially as k increases).
 
 Compilation:
 1. Make sure "CXX" in "makefile" is set to the desired compiler.
@@ -52,5 +55,4 @@ Style notes:
 11. Prefer English-word boolean operators: "and", "not".
 
 TODO:
-1. Memoize moves between 2 points that are better than the direct distance between them.
 
