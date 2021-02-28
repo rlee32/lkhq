@@ -60,6 +60,7 @@ int main(int argc, const char** argv)
     const auto &kmax = config.get<size_t>("kmax", 3);
     std::cout << "kmax: " << kmax << std::endl;
     auto new_length = hill_climb::hill_climb(hill_climber, tour, kmax);
+    std::cout << "non-feasible checks: " << hill_climber.nonfeasible_checks_ << std::endl;
 
     std::cout << std::endl;
     std::cout << "starting tour length: " << initial_tour_length << std::endl;

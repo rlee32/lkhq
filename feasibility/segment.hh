@@ -8,6 +8,8 @@
 namespace feasibility {
 
 // Represents one contiguous portion of the tour, storing only the endpoints.
+// Segment always flows in direction of tour, from first to second point.
+// Given two endpoints, first and second points should be ordered properly to obtain 1 of the 2 possiblities.
 // Useful in keeping track of how a tour is split from successive edge removals.
 class Segment {
     using point_id_t = primitives::point_id_t;
@@ -19,15 +21,18 @@ class Segment {
 public:
     Segment(point_id_t first, point_id_t second) : first_(first), second_(second) {}
 
-    // Splits this segment given a point and edge direction.
-    // Modifies this segment to be the first segment and returns the second segment.
-    Segment split(const Cycle &cycle, point_id_t split_point, Direction removal_direction);
+    // Splits this segment given a 2 split points, which should be an existing edge in the tour (e.g. sequence 1 apart).
+    // The split points can be in any order.
+    Segment split(const Cycle &cycle, point_id_t split_point_1, point_id_t split_point_2);
 
-    sequence_t first_sequence(const Cycle &cycle) const;
-    sequence_t second_sequence(const Cycle &cycle) const;
+    // Returns true if this segment contains the point.
+    bool has_point(const Cycle &cycle, point_id_t point) const;
 
-    // Returns the direction of this segment.
-    Direction direction(const Cycle &cycle) const;
+    // Returns true if one of the endpoints match the input point.
+    bool has_point(point_id_t point) const;
+
+    // Returns the point not equal to input point.
+    primitives::point_id_t other(point_id_t point) const;
 
     void reverse();
 

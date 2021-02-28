@@ -1,6 +1,5 @@
 # as in k-opt
 kmax            15 # latest mona lisa
-kmax            2
 kmax            3
 
 #kmax_kswap      5
@@ -15,8 +14,8 @@ tsp_file_path   ../data/xrb14233.tsp
 #tour_file_path  saves/xqf131_564.tour
 #tour_file_path  ../data/lrb744710.tour
 #tour_file_path   input/monalisa100K_5757191.tour
-#tour_file_path  ../data/xrb14233.tour
 tour_file_path  /tmp/perturbed.tour
+tour_file_path  ../data/xrb14233.tour
 
 # if not specified, better tours are not saved.
 output_path /tmp/local-optimum.tour

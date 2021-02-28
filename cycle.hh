@@ -14,6 +14,6 @@ struct Cycle {
     PointVector next_; // indexed by point ID, gives next point ID in the tour.
 
     // Returns a normalized sequence number, where 'start' is 0.
-    primitives::sequence_t normalized_sequence(primitives::point_id_t point, primitives::sequence_t start);
+    primitives::sequence_t normalized_sequence(primitives::point_id_t point, primitives::sequence_t start) const;
 };
 

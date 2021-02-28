@@ -31,7 +31,8 @@ Novel features of this TSP solver:
     Associate every point with a box that covers the entire domain that was explored in its k-opt search.
     Then redo the search for said point only if changed points fall within said box.
 
-4. Only take steps that have the possibility of becoming feasible moves. This avoids the potentially numerous and costly feasibility checks (especially as k increases).
+4. A mode where only steps that have the possibility of becoming feasible moves are taken. This avoids the potentially numerous and costly feasibility checks (especially as k increases).
+    Note that within sequential moves, there are 2 classes of moves: one class where the tour never breaks into multiple segments throughout the course of the move, and one class where the tour can become disconnected.
 
 Compilation:
 1. Make sure "CXX" in "makefile" is set to the desired compiler.

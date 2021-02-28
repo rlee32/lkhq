@@ -19,6 +19,8 @@ class HillClimber
 
     void changed(const KMove &kmove);
 
+    int nonfeasible_checks_{0};
+
 private:
     size_t m_kmax {3};
 

@@ -24,6 +24,8 @@ void HillClimber::final_move_check() {
     if (cycle_check::feasible(*m_tour, m_kmove)) {
         search_extents_[m_kmove.starts.front()] = std::nullopt;
         m_stop = true;
+    } else {
+        ++nonfeasible_checks_;
     }
 }
 

@@ -15,7 +15,8 @@ SRCS = k-opt.cc tour.cc \
     point_quadtree/point_inserter.cc \
     cycle_check.cc \
     cycle.cc \
-    feasibility/segment.cc
+    feasibility/segment.cc \
+    feasibility/multi_segment.cc
 
 %.o: %.cc; $(CXX) $(CXX_FLAGS) -o $@ -c $<
 
