@@ -58,6 +58,8 @@ int main(int argc, const char** argv)
     // hill climb from initial tour.
     HillClimber hill_climber(point_set);
     const auto &kmax = config.get<size_t>("kmax", 3);
+    hill_climber.prune_intersections_ = bool(config.get<size_t>("prune_intersections", 0));
+    std::cout << "prune intersections: " << hill_climber.prune_intersections_ << std::endl;
     std::cout << "kmax: " << kmax << std::endl;
     auto new_length = hill_climb::hill_climb(hill_climber, tour, kmax);
     std::cout << "non-feasible checks: " << hill_climber.nonfeasible_checks_ << std::endl;

@@ -20,7 +20,7 @@ public:
     void validate();
 
 private:
-    const std::vector<Segment> &segments_;
+    std::vector<Segment> segments_;
     SegmentNode root_;
 
     // Impl of validate().

@@ -1,8 +1,11 @@
 # as in k-opt
 kmax            15 # latest mona lisa
-kmax            2
+kmax            5
 
 #kmax_kswap      5
+
+# if not 0, does not allow new edges to cross existing tour edges.
+prune_intersections 0
 
 # required.
 tsp_file_path   ../data/pbn423.tsp
@@ -19,6 +22,7 @@ tour_file_path  /tmp/perturbed.tour
 tour_file_path  ../data/xrb14233.tour
 tour_file_path  /tmp/min-ch-initial.tour
 tour_file_path  /tmp/minch.tour
+tour_file_path  /tmp/minch-2.tour
 
 # if not specified, better tours are not saved.
-output_path /tmp/minch-2.tour
+#output_path /tmp/minch-2.tour

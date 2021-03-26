@@ -60,7 +60,9 @@ std::optional<KMove> HillClimber::find_best(const Tour &tour, size_t kmax) {
     }
     m_tour = &tour;
     m_kmax = kmax;
-    initialize_segment_quadtree(tour);
+    if (prune_intersections_) {
+        initialize_segment_quadtree(tour);
+    }
     reset_search();
     for (primitives::point_id_t i {0}; i < size(); ++i) {
         if (search_extents_[i]) {
@@ -95,14 +97,23 @@ void HillClimber::search(primitives::point_id_t i) {
 
 void HillClimber::try_nearby_points() {
     const auto start = m_kmove.starts.back();
-    for (auto p : search_neighborhood(start))
-    {
+    segment_quadtree::Point start_point{m_tour->x(start), m_tour->y(start)};
+    for (auto p : search_neighborhood(start)) {
         // check easy exclusion cases.
         const bool old_edge {p == next(start) or p == prev(start)};
         const bool self {p == start};
         const bool backtrack {(not m_kmove.ends.empty()) and p == m_kmove.ends.back()};
         if (backtrack or self or old_edge) {
             continue;
+        }
+
+        // check if it intersects with current tour edges.
+        if (prune_intersections_) {
+            segment_quadtree::Point new_point{m_tour->x(p), m_tour->y(p)};
+            segment_quadtree::Segment new_segment(start_point, new_point);
+            if (segment_quadtree_->intersects(new_segment)) {
+                continue;
+            }
         }
 
         // check if worth considering.

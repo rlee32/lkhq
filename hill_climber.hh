@@ -22,6 +22,9 @@ class HillClimber
 
     int nonfeasible_checks_{0};
 
+    // if true, does not allow new edges to cross existing tour edges.
+    bool prune_intersections_{false};
+
 private:
     size_t m_kmax {3};
 
