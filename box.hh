@@ -8,9 +8,9 @@
 
 struct Box {
     primitives::space_t xmin {std::numeric_limits<primitives::space_t>::max()};
-    primitives::space_t xmax {std::numeric_limits<primitives::space_t>::min()};
+    primitives::space_t xmax {std::numeric_limits<primitives::space_t>::lowest()};
     primitives::space_t ymin {std::numeric_limits<primitives::space_t>::max()};
-    primitives::space_t ymax {std::numeric_limits<primitives::space_t>::min()};
+    primitives::space_t ymax {std::numeric_limits<primitives::space_t>::lowest()};
 
     bool touches(const Box& other) const {
         // TODO: tolerance?

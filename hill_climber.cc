@@ -40,12 +40,27 @@ std::vector<primitives::point_id_t> HillClimber::search_neighborhood(primitives:
     return m_point_set.get_points(p, box);
 }
 
+void HillClimber::initialize_segment_quadtree(const Tour &tour) {
+    std::vector<segment_quadtree::Segment> segments;
+    const auto &order = tour.order();
+    segment_quadtree::Point prev_point{tour.x(order.back()), tour.y(order.back())};
+    assert(order.size() == tour.x().size());
+    for (const auto &i : order) {
+        auto point = segment_quadtree::Point{tour.x(i), tour.y(i)};
+        segments.emplace_back(prev_point, point);
+        assert(std::abs(segments.back().length()) > 1e-10);
+        prev_point = point;
+    }
+    segment_quadtree_.emplace(segments);
+}
+
 std::optional<KMove> HillClimber::find_best(const Tour &tour, size_t kmax) {
     if (search_extents_.empty()) {
         search_extents_.resize(tour.size());
     }
     m_tour = &tour;
     m_kmax = kmax;
+    initialize_segment_quadtree(tour);
     reset_search();
     for (primitives::point_id_t i {0}; i < size(); ++i) {
         if (search_extents_[i]) {

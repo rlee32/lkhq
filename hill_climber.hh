@@ -5,6 +5,7 @@
 
 #include "tour.hh"
 #include "primitives.hh"
+#include "segment_quadtree/segment_quadtree.hh"
 #include "point_set.hh"
 #include "kmove.hh"
 #include "kmargin.hh"
@@ -46,6 +47,9 @@ private:
 
     const Tour *m_tour{nullptr};
     const PointSet &m_point_set;
+
+    std::optional<segment_quadtree::SegmentQuadtree> segment_quadtree_;
+    void initialize_segment_quadtree(const Tour &tour);
 
     primitives::sequence_t size() const {
         return m_tour->size();

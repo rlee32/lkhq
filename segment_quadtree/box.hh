@@ -14,9 +14,9 @@ struct Box {
     Box(const Point &a, const Point &b);
 
     double xmin_ {std::numeric_limits<double>::max()};
-    double xmax_ {std::numeric_limits<double>::min()};
+    double xmax_ {std::numeric_limits<double>::lowest()};
     double ymin_ {std::numeric_limits<double>::max()};
-    double ymax_ {std::numeric_limits<double>::min()};
+    double ymax_ {std::numeric_limits<double>::lowest()};
 
     bool touches(const Box& other) const;
     bool touches(const Point &point) const;
